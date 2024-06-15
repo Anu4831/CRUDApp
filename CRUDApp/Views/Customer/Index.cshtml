@@ -1,0 +1,53 @@
+﻿@model List<Customer>
+@{
+
+}
+
+    @{
+        // ViewData["Title"] = "Index";
+    }
+
+    <h2 class="text-center mb-5">List of Customers</h2>
+    <div class="row mb-5">
+        <div class="col">
+            <a class="btn btn-primary" asp-controller="Customer" asp-action="Create">Add Customer</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Province</th>
+                <th>District</th>
+                <th>Municipality</th>
+                <th>Ward No</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Email</td>
+                    <td>+977 @customer.Phone</td>
+                    <td>@customer.Province</td>
+                    <td>@customer.District</td>
+                    <td>@customer.Municipality</td>
+                    <td>@customer.WardNo</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@customer.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@customer.Id"
+                           onclick="return confirm('Are you sure you want to delete this customer?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+    
